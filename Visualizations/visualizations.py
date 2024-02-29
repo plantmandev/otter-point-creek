@@ -3,8 +3,8 @@
 #                    # 
 
 # This file contains funcions used for the creation of visualizations depicting the changes 
-# in Temperature (C°), salinity, dissolved oxygen (mg/L), pH, orthophosphate (), ammonium (),# 
-# nitrite (), nitrate () and chlorophyll A () from 2003 to 2023. 
+# in Temperature (C°), salinity, dissolved oxygen (mg/L), pH, orthophosphate (mg/L), ammonium (mg/L),# 
+# nitrite (mg/L), nitrate (mg/L) and chlorophyll A (µg/L) from 2003 to 2023. 
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -111,7 +111,7 @@ def PO4F_plot():
     # Add axis legends + Title 
     plt.plot(cbmocnut['Datetime'], cbmocnut['PO4F'], color='blue')
     plt.xlabel('Date')
-    plt.ylabel('PO4F ()')
+    plt.ylabel('PO4F (ml/L)')
     plt.title(f'Otter Point Creek Orthophosphate (2003-2023)') 
     plt.xticks(rotation=45)
     plt.legend()
@@ -133,7 +133,7 @@ def NH4F_plot():
     # Add axis legends + Title 
     plt.plot(cbmocnut['Datetime'], cbmocnut['NH4F'], color='gray')
     plt.xlabel('Date')
-    plt.ylabel('NH4F ()')
+    plt.ylabel('NH4F (ml/L)')
     plt.title(f'Otter Point Creek Ammonium (2003-2023)') 
     plt.xticks(rotation=45)
     plt.legend()
@@ -155,7 +155,7 @@ def NO2F_plot():
     # Add axis legends + Title 
     plt.plot(cbmocnut['Datetime'], cbmocnut['NO2F'], color='purple')
     plt.xlabel('Date')
-    plt.ylabel('NO2F ()')
+    plt.ylabel('NO2F (ml/L)')
     plt.title(f'Otter Point Creek Nitrite (2003-2023)') 
     plt.xticks(rotation=45)
     plt.legend()
@@ -177,7 +177,7 @@ def NO3F_plot():
     # Add axis legends + Title 
     plt.plot(cbmocnut['Datetime'], cbmocnut['NO3F'], color='pink')
     plt.xlabel('Date')
-    plt.ylabel('NO3F ()')
+    plt.ylabel('NO3F (ml/L)')
     plt.title(f'Otter Point Creek Nitrate (2003-2023)') 
     plt.xticks(rotation=45)
     plt.legend()
@@ -199,7 +199,7 @@ def CHLA_plot():
     # Add axis legends + Title 
     plt.plot(cbmocnut['Datetime'], cbmocnut['CHLA_N'], color='red')
     plt.xlabel('Date')
-    plt.ylabel('CHLA ()')
+    plt.ylabel('CHLA (µg/L)')
     plt.title(f'Otter Point Creek Chlorophyll A (2003-2023)') 
     plt.xticks(rotation=45)
     plt.legend()
