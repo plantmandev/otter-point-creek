@@ -212,7 +212,7 @@ def CHLA_plot():
 
 def secchi_plot(): 
     # Read master nutrient file
-    opc_data = pd.read_csv('./data/SAV/sav_data.xlsx')
+    opc_data = pd.read_csv('./data/SAV/opc_data.csv')
 
     # Extracts date from csv and saves data into 'Datetime' (universal)
     opc_data['Datetime'] = pd.to_datetime(opc_data['Date'])
@@ -239,13 +239,13 @@ def secchi_plot():
     plt.show() 
 
 # Uncomment + Run to generate and save visualizations 
-temperature_plot()
-salinity_plot()
-DO_plot()
-pH_plot()
-PO4F_plot()
-NH4F_plot()
-NO2F_plot()
-NO3F_plot()
-CHLA_plot()
+# temperature_plot()
+# salinity_plot()
+# DO_plot()
+# pH_plot()
+# PO4F_plot()
+# NH4F_plot()
+# NO2F_plot()
+# NO3F_plot()
+# CHLA_plot()
 secchi_plot()
