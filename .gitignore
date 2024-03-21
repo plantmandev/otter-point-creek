@@ -1,0 +1,11 @@
+# OPC SAV data
+data/SAV/biomass.csv
+data/SAV/cbmocnut_sav_merged.csv
+data/SAV/clean_sav_data.csv
+data/SAV/ocular_data.csv
+data/SAV/opc_data_2018.csv
+data/SAV/opc_data.csv
+data/SAV/opc_dist_query.csv
+data/SAV/sav_data.xlsx
+data/SAV/sav_final_data.xlsx
+data/SAV/site_description.csv
