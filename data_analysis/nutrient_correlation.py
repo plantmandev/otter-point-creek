@@ -2,6 +2,8 @@
 #   NUTRIENT DATA CORRELATION ANALYSIS   # 
 #                                        # 
 
+# TODO:
+# Edit comments into proper description
 # REASONING (For Tasha)
 
 # If we find that variance in nutrient levels are correlated to each other, we can assume that upticks in these levels may be due to seasonal events that introduce sediment loads into the creek. We know that increased sediment loads lead to an increase of nutrient levels across the board. 
@@ -41,12 +43,12 @@ def plot_correlation_heatmap(correlation_matrix):
     plt.title('Correlation Matrix')  
 
     # Save Plot Locally
-    plot = './Visualizations/nutrient_correlation_plot.png'
+    plot = './resources/nutrient_correlation/nutrient_correlation_plot.png'
     plt.savefig(plot)
 
     # Show Plot
     plt.show()
 
 # Uncomment to run code
-correlation_matrix = nutrient_correlation() 
-plot_correlation_heatmap(correlation_matrix) 
+# correlation_matrix = nutrient_correlation() 
+# plot_correlation_heatmap(correlation_matrix) 

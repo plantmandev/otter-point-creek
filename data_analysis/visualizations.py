@@ -14,7 +14,7 @@ plt.figure(figsize = (10,5))  # Height, Width
 
 def temperature_plot(): 
     # Read master nutrient file
-    cbmocwq = pd.read_csv('./Otter Point Creek Water Quality Data/cbmocwq.csv')
+    cbmocwq = pd.read_csv('./data/cbmocwq/cbmocwq.csv')
 
     # Extracts date from csv and saves data into 'Datetime' (universal)
     cbmocwq['Datetime'] = pd.to_datetime(cbmocwq['DateTimeStamp'])
@@ -28,7 +28,7 @@ def temperature_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './Visualizations/temperature_plot.png'
+    plot = './resources/visualizations/temperature_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -36,7 +36,7 @@ def temperature_plot():
 
 def salinity_plot(): 
     # Read master nutrient file
-    cbmocwq = pd.read_csv('./Otter Point Creek Water Quality Data/cbmocwq.csv')
+    cbmocwq = pd.read_csv('./data/cbmocwq/cbmocwq.csv')
 
     # Extracts date from csv and saves data into 'Datetime' (universal)
     cbmocwq['Datetime'] = pd.to_datetime(cbmocwq['DateTimeStamp'])
@@ -50,7 +50,7 @@ def salinity_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './Visualizations/salinity_plot.png'
+    plot = './resources/visualizations/salinity_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -58,7 +58,7 @@ def salinity_plot():
 
 def DO_plot(): 
     # Read master nutrient file
-    cbmocwq = pd.read_csv('./Otter Point Creek Water Quality Data/cbmocwq.csv')
+    cbmocwq = pd.read_csv('./data/cbmocwq/cbmocwq.csv')
 
     # Extracts date from csv and saves data into 'Datetime' (universal)
     cbmocwq['Datetime'] = pd.to_datetime(cbmocwq['DateTimeStamp'])
@@ -72,7 +72,7 @@ def DO_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './Visualizations/DO_plot.png'
+    plot = './resources/visualizations/DO_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -80,7 +80,7 @@ def DO_plot():
 
 def pH_plot(): 
     # Read master nutrient file
-    cbmocwq = pd.read_csv('./Otter Point Creek Water Quality Data/cbmocwq.csv')
+    cbmocwq = pd.read_csv('./data/cbmocwq/cbmocwq.csv')
 
     # Extracts date from csv and saves data into 'Datetime' (universal)
     cbmocwq['Datetime'] = pd.to_datetime(cbmocwq['DateTimeStamp'])
@@ -94,7 +94,7 @@ def pH_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './Visualizations/pH_plot.png'
+    plot = './resources/visualizations/pH_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -102,7 +102,7 @@ def pH_plot():
 
 def PO4F_plot():
     # Read master nutrient file
-    cbmocnut = pd.read_csv('./Otter Point Creek Nutrient Data/cbmocnut.csv')
+    cbmocnut = pd.read_csv('./data/cbmocnut/cbmocnut.csv')
 
     # Extracts date from csv and saves data into 'Datetime' (universal)
     cbmocnut['Datetime'] = pd.to_datetime(cbmocnut['DateTimeStamp'])
@@ -116,7 +116,7 @@ def PO4F_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './Visualizations/P04F_plot.png'
+    plot = './resources/visualizations/P04F_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -124,7 +124,7 @@ def PO4F_plot():
 
 def NH4F_plot(): 
     # Read master nutrient file
-    cbmocnut = pd.read_csv('./Otter Point Creek Nutrient Data/cbmocnut.csv')
+    cbmocnut = pd.read_csv('./data/cbmocnut/cbmocnut.csv')
 
     # Extracts date from csv and saves data into 'Datetime' (universal)
     cbmocnut['Datetime'] = pd.to_datetime(cbmocnut['DateTimeStamp'])
@@ -138,7 +138,7 @@ def NH4F_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './Visualizations/NH4F_plot.png'
+    plot = './resources/visualizations/NH4F_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -146,7 +146,7 @@ def NH4F_plot():
 
 def NO2F_plot():
     # Read master nutrient file
-    cbmocnut = pd.read_csv('./Otter Point Creek Nutrient Data/cbmocnut.csv')
+    cbmocnut = pd.read_csv('./data/cbmocnut/cbmocnut.csv')
 
     # Extracts date from csv and saves data into 'Datetime' (universal)
     cbmocnut['Datetime'] = pd.to_datetime(cbmocnut['DateTimeStamp'])
@@ -160,7 +160,7 @@ def NO2F_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './Visualizations/NO2F_plot.png'
+    plot = './resources/visualizations/NO2F_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -168,7 +168,7 @@ def NO2F_plot():
 
 def NO3F_plot():
     # Read master nutrient file
-    cbmocnut = pd.read_csv('./Otter Point Creek Nutrient Data/cbmocnut.csv')
+    cbmocnut = pd.read_csv('./data/cbmocnut/cbmocnut.csv')
 
     # Extracts date from csv and saves data into 'Datetime' (universal)
     cbmocnut['Datetime'] = pd.to_datetime(cbmocnut['DateTimeStamp'])
@@ -182,7 +182,7 @@ def NO3F_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './Visualizations/NO3F_plot.png'
+    plot = './resources/visualizations/NO3F_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -190,7 +190,7 @@ def NO3F_plot():
 
 def CHLA_plot(): 
     # Read master nutrient file
-    cbmocnut = pd.read_csv('./Otter Point Creek Nutrient Data/cbmocnut.csv')
+    cbmocnut = pd.read_csv('./data/cbmocnut/cbmocnut.csv')
 
     # Extracts date from csv and saves data into 'Datetime' (universal)
     cbmocnut['Datetime'] = pd.to_datetime(cbmocnut['DateTimeStamp'])
@@ -204,19 +204,48 @@ def CHLA_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './Visualizations/CHLA_plot.png'
+    plot = './resources/visualizations/CHLA_plot.png'
+    plt.savefig(plot)
+
+    # Show Plot
+    plt.show() 
+
+def secchi_plot(): 
+    # Read master nutrient file
+    opc_data = pd.read_csv('./data/SAV/sav_data.xlsx')
+
+    # Extracts date from csv and saves data into 'Datetime' (universal)
+    opc_data['Datetime'] = pd.to_datetime(opc_data['Date'])
+
+    # Ensures that 'Secchi' is numeric + Ignore NaN values 
+    opc_data['Secchi (m)'] = pd.to_numeric(opc_data['Secchi (m)'], errors='coerce')
+
+    # Removes upper outlier (Year 2012 -> Secchi value of~ 40)
+    filtered_opc_data = opc_data[opc_data['Secchi (m)'] <= 40]
+
+    # Add axis legends + Title 
+    plt.plot(filtered_opc_data['Datetime'], filtered_opc_data['Secchi (m)'], color='orange')
+    plt.xlabel('Date')
+    plt.ylabel('Secchi depth (m)')
+    plt.title(f'Otter Point Creek Secchi (2007-2017)') 
+    plt.xticks(rotation=45)
+    plt.legend()
+
+    # # Save Plot Locally
+    plot = './resources/visualizations/secchi_plot.png'
     plt.savefig(plot)
 
     # Show Plot
     plt.show() 
 
 # Uncomment + Run to generate and save visualizations 
-# temperature_plot()
-# salinity_plot()
-# DO_plot()
-# pH_plot()
-# PO4F_plot()
-# NH4F_plot()
-# NO2F_plot()
-# NO3F_plot()
-# CHLA_plot()
+temperature_plot()
+salinity_plot()
+DO_plot()
+pH_plot()
+PO4F_plot()
+NH4F_plot()
+NO2F_plot()
+NO3F_plot()
+CHLA_plot()
+secchi_plot()
