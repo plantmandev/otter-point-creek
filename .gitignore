@@ -1,1 +1,2 @@
-./data
+# Hide OPC SAV data
+data/SAV
