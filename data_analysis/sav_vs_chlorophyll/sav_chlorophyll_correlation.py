@@ -1,15 +1,16 @@
-#                                               # 
-#   SAV / CHLOROPHYLL A CORRELEATION ANALYSIS   # 
-#                                               # 
+#                                              # 
+#   SAV / CHLOROPHYLL A CORRELATION ANALYSIS   # 
+#                                              # 
 
-# The following functions are 
+# The following function uses Chlorophyll A and SAV (HV) data from 2007-2017 to perform a 'Pearson correlation coefficient' analysis, outputting a table with the values of this correlation analysis. This function allows us to understand the correlation between Chlorophyll A concentrations in the OPC and SAV volume (HV) observed in surveys. Additionally, a time series analysis with a linear regression between Chlorophyll A concentration and SAV (HV) volume in order further confirm if the relationship observed is consistent across analyses. The information obtained from these analyses will help us understand if higher Chlorophyll A concentrations have negative effects on SAV volume. This is important information as it will help predict if the influx of nutrients that will added to the stream post-dam removal (through the dissolution of nutrients in sediment stored behind the dam) that is expected to increase algae volume (measured as Chlorophyll A) will negatively impact SAV volume. 
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# This function uses Chlorophyll A and SAV volume (HV) from 2007-2017 to perform a 'Pearson correlation coefficient matrix' results as a table. This correlation analysis allows us to understand the relationship between Chlorophyll A concentration and SAV (HV) volume observed in OPC surveys.  
 def sav_chlorophyll_correlation(cbmocnut_path, opc_data_path):
-     # Load the datasets
+    # Load the datasets
     cbmocnut_df = pd.read_csv(cbmocnut_path)
     opc_data_df = pd.read_csv(opc_data_path)
 
@@ -24,74 +25,24 @@ def sav_chlorophyll_correlation(cbmocnut_path, opc_data_path):
     # Merge the datasets based on the date
     merged_df = pd.merge(opc_data_df, cbmocnut_df[['Date', 'CHLA_N']], on = 'Date', how = 'inner')
 
-    # Clean the data
+    # Clean data
     merged_df['HV'] = pd.to_numeric(merged_df['HV'], errors = 'coerce')
     merged_df.dropna(subset = ['HV', 'CHLA_N'], inplace = True)
 
     # Pearson correlation coefficient
-    correlation_result = merged_df[['HV', 'CHLA_N']].corr(method='pearson')
-    print("Pearson Correlation Coefficient:")
-    print(correlation_result)
+    correlation_result = merged_df[['HV', 'CHLA_N']].corr()
 
-def sav_chlorophyll_scatterplot(cbmocnut_path, opc_data_path):
-    # Load the datasets
-    cbmocnut_df = pd.read_csv(cbmocnut_path)
-    opc_data_df = pd.read_csv(opc_data_path)
+    # Plot and save the correlation matrix
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(correlation_result, annot=True, cmap='coolwarm', fmt=".2f")
+    plt.title('Chlorophyll Correlation Matrix')
+    plt.tight_layout()
 
-    # Prepare the data for merging
-    cbmocnut_df['DateTimeStamp'] = pd.to_datetime(cbmocnut_df['DateTimeStamp'])
-    cbmocnut_df['Date'] = cbmocnut_df['DateTimeStamp'].dt.date
-    opc_data_df['Date'] = pd.to_datetime(opc_data_df['Date'])
+    # Save Plot Locally
+    plot = './resources/sav_vs_chlorophyll/chlorophyll_correlation_matrix.png'
+    plt.savefig(plot)
 
-    # Ensure both 'Date' columns are of the same type
-    cbmocnut_df['Date'] = pd.to_datetime(cbmocnut_df['Date'])
-    
-    # Merge the datasets based on the date
-    merged_df = pd.merge(opc_data_df, cbmocnut_df[['Date', 'CHLA_N']], on='Date', how='inner')
-
-    # Clean the data
-    merged_df['HV'] = pd.to_numeric(merged_df['HV'], errors='coerce')
-    merged_df.dropna(subset=['HV', 'CHLA_N'], inplace=True)
-
-    # Visualization: Scatter Plot
-    plt.figure(figsize=(10, 6))
-    sns.scatterplot(data = merged_df,
-                    x='HV', 
-                    y='CHLA_N')
-    plt.title('Scatter Plot of HV vs CHLA_N')
-    plt.xlabel('Hydrilla verticillata (HV)')
-    plt.ylabel('Chlorophyll A (CHLA_N)')
-    plt.show()
-
-def sav_chlorophyll_time_series(cbmocnut_path, opc_data_path): 
-    # Load the datasets
-    cbmocnut_df = pd.read_csv(cbmocnut_path)
-    opc_data_df = pd.read_csv(opc_data_path)
-
-    # Prepare the data for merging
-    cbmocnut_df['DateTimeStamp'] = pd.to_datetime(cbmocnut_df['DateTimeStamp'])
-    cbmocnut_df['Date'] = cbmocnut_df['DateTimeStamp'].dt.date
-    opc_data_df['Date'] = pd.to_datetime(opc_data_df['Date'])
-
-    # Ensure both 'Date' columns are of the same type
-    cbmocnut_df['Date'] = pd.to_datetime(cbmocnut_df['Date'])
-    
-    # Merge the datasets based on the date
-    merged_df = pd.merge(opc_data_df, cbmocnut_df[['Date', 'CHLA_N']], on='Date', how='inner')
-
-    # Clean the data
-    merged_df['HV'] = pd.to_numeric(merged_df['HV'], errors = 'coerce')
-    merged_df.dropna(subset = ['HV', 'CHLA_N'], inplace = True)
-
-    # Visualization: Time Series Plot
-    time_series_data = merged_df.groupby('Date').agg({'HV': 'mean', 'CHLA_N': 'mean'}).reset_index()
-    plt.figure(figsize = (14, 7))
-    plt.plot(time_series_data['Date'], time_series_data['HV'], label = 'HV')
-    plt.plot(time_series_data['Date'], time_series_data['CHLA_N'], label = 'Chlorophyll-A', color = 'r')
-    plt.xlabel('Date')
-    plt.ylabel('Value')
-    plt.title('Time Series of HV and Chlorophyll-A Over Time')
-    plt.legend()
+    # Show Plot 
     plt.show()
 
 # Uncomment below code to run 
@@ -99,5 +50,3 @@ cmmocnut_path = './data/cbmocnut/cbmocnut.csv'
 opc_data_path = './data/SAV/opc_data.csv'
 
 sav_chlorophyll_correlation(cmmocnut_path, opc_data_path)
-sav_chlorophyll_scatterplot(cmmocnut_path, opc_data_path)
-sav_chlorophyll_time_series(cmmocnut_path, opc_data_path)
