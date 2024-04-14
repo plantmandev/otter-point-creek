@@ -1,0 +1,6 @@
+Site,pH,Nitrogen (ppm),Nitrate (ppm),Ammonium (ppm),Phosphorus (ppm),Potassium (ppm),Sulfur (ppm),Calcium (ppm),Magnesium (ppm),Sodium (ppm),Iron (ppm),Manganese (ppm),Zinc (ppm),Copper (ppm),Boron (ppm),
+Attkison Dam Downstream #1,7.18,1.61,0.51,1.1,0.34,3.64,2.68,26.42,4.26,7.29,0.47,0.79,0.01,0.01,0.04,
+Attkison Dam Upstream #1,6.83,1.61,0.51,1.1,7.54,7.66,6.42,37.04,16.4,20.97,121.43,3.66,0.12,0.01,0.17,
+Atkisson Dam Upsream #2,6.06,3.17,0.99,2.18,3.13,8.33,8.62,62.67,18.43,11.35,37.39,0.95,0.08,0.01,0.08,
+Otter Point Creek ACL,7.03,8.31,1.32,7,1.46,5.75,10,25.37,16.64,15.9,39.11,3.15,0.11,0.01,0.1,
+Optimal Range,6.5 - 9.0,1.5 - 2.5,1.5 - 2.5,0 - 1,0 - 0.04,30-Oct,38 - 72,16-Jul,93 - 314,28 - 67,0.5 - 30,0.1 - 1,0.01 - 0.2,0.03 - 0.1,0.006 - 0.02,0.1 - 0.5

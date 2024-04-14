@@ -46,8 +46,8 @@ def sav_chlorophyll_correlation(cbmocnut_path, opc_data_path):
     # Show Plot 
     plt.show()
 
-# # Uncomment below code to run 
-# cmmocnut_path = './data/cbmocnut/cbmocnut.csv'
-# opc_data_path = './data/SAV/opc_data.csv'
+# Uncomment below code to run 
+cmmocnut_path = './data/cbmocnut/cbmocnut.csv'
+opc_data_path = './data/SAV/opc_data.csv'
 
-# sav_chlorophyll_correlation(cmmocnut_path, opc_data_path)
+sav_chlorophyll_correlation(cmmocnut_path, opc_data_path)
