@@ -1,16 +1,11 @@
-#                    # 
-#   VISUALIZATIONS   # 
-#                    # 
+#                                       # 
+#   DISSOLVED NUTRIENT VISUALIZATIONS   # 
+#                                       # 
 
-# This file contains functions used for the creation of visualizations depicting the changes 
-# in Temperature (C°), salinity, dissolved oxygen (mg/L), pH, orthophosphate (mg/L), ammonium (mg/L),# 
-# nitrite (mg/L), nitrate (mg/L) and chlorophyll A (µg/L) from 2003 to 2023. 
+# This file contains functions used for the creation of visualizations depicting the changes in Temperature (C°), salinity, dissolved oxygen (mg/L), pH, orthophosphate (mg/L), ammonium (mg/L), nitrite (mg/L), nitrate (mg/L) and chlorophyll A (µg/L) from 2003 to 2023. 
 
 import pandas as pd
 import matplotlib.pyplot as plt
-
-# Setting figure sizes (all visualizations / plots)
-plt.figure(figsize = (10,5))  # Height, Width
 
 def temperature_plot(): 
     # Read master nutrient file
@@ -28,7 +23,7 @@ def temperature_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './resources/visualizations/temperature_plot.png'
+    plot = './resources/dissolved_nutrient_visualization/temperature_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -50,7 +45,7 @@ def salinity_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './resources/visualizations/salinity_plot.png'
+    plot = './resources/dissolved_nutrient_visualization/salinity_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -72,7 +67,7 @@ def DO_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './resources/visualizations/DO_plot.png'
+    plot = './resources/dissolved_nutrient_visualization/DO_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -94,7 +89,7 @@ def pH_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './resources/visualizations/pH_plot.png'
+    plot = './resources/dissolved_nutrient_visualization/pH_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -116,7 +111,7 @@ def PO4F_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './resources/visualizations/P04F_plot.png'
+    plot = './resources/dissolved_nutrient_visualization/P04F_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -138,7 +133,7 @@ def NH4F_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './resources/visualizations/NH4F_plot.png'
+    plot = './resources/dissolved_nutrient_visualization/NH4F_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -160,7 +155,7 @@ def NO2F_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './resources/visualizations/NO2F_plot.png'
+    plot = './resources/dissolved_nutrient_visualization/NO2F_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -182,7 +177,7 @@ def NO3F_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './resources/visualizations/NO3F_plot.png'
+    plot = './resources/dissolved_nutrient_visualization/NO3F_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -204,7 +199,7 @@ def CHLA_plot():
     plt.legend()
 
     # Save Plot Locally
-    plot = './resources/visualizations/CHLA_plot.png'
+    plot = './resources/dissolved_nutrient_visualization/CHLA_plot.png'
     plt.savefig(plot)
 
     # Show Plot
@@ -232,13 +227,19 @@ def secchi_plot():
     plt.legend()
 
     # # Save Plot Locally
-    plot = './resources/visualizations/secchi_plot.png'
+    plot = './resources/dissolved_nutrient_visualization/secchi_plot.png'
     plt.savefig(plot)
 
     # Show Plot
     plt.show() 
 
-# Uncomment + Run to generate and save visualizations 
+# --------------------------------------------------
+# Setting figure sizes (all visualizations / plots)
+plt.figure(figsize = (10,5))  # Height, Width
+# --------------------------------------------------
+
+
+# Uncomment below code to run
 # temperature_plot()
 # salinity_plot()
 # DO_plot()
@@ -248,4 +249,4 @@ def secchi_plot():
 # NO2F_plot()
 # NO3F_plot()
 # CHLA_plot()
-secchi_plot()
+# secchi_plot()

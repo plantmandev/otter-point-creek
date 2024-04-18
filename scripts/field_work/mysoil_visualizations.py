@@ -583,7 +583,7 @@ sediment_data_path = 'data/sediment/sediment_data.csv'
 # Uncomment below code to run visualizations
 # ph_sediment_plot(sediment_data_path)
 # potassium_sediment_plot(sediment_data_path)
-nitrogen_sediment_plot(sediment_data_path)
+# nitrogen_sediment_plot(sediment_data_path)
 # nitrate_sediment_plot(sediment_data_path)
 # ammonium_sediment_plot(sediment_data_path)
 # phosphorus_sediment_plot(sediment_data_path)

@@ -1,48 +1,64 @@
+#                                         # 
+#   SAV / NUTRIENT CORRELATION ANALYSIS   # 
+#                                         # 
+
+# These functions perform correlation analysis (Pearson correlation coefficient analysis) between SAV abundance (Hydrilla verticillata) based on surveys performed by the National Estuarine Research Reserve (NERR) from 2003 to 2017. Additionally, these correlations are visualized to better showcase correlations over time. 
+
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
+#   PEARSON CORRELATION COEFFICIENT ANALYSIS   # 
 
-def nitrogen_sediment_plot(sediment_data_path): 
-    # Load the data
-    sediment_data = pd.read_csv(sediment_data_path)
-
-    # Process nitrogen (ppm) data, excluding the optimal range entry
-    nitrogen_data = sediment_data[~sediment_data['Site'].str.contains("Optimal Range", na = False)]
-    nitrogen_data['Nitrogen (ppm)'] = pd.to_numeric(nitrogen_data['Nitrogen (ppm)'], errors = 'coerce')
-
-    # Extract the optimal range from the row labeled 'Optimal Range'
-    optimal_range = sediment_data[sediment_data['Site'] == 'Optimal Range']['Nitrogen (ppm)'].values[0]
-    optimal_low, optimal_high = map(float, optimal_range.replace(' Nitrogen (ppm)', '').split(' - '))
-
-    # Create the plot
-    fig, ax = plt.subplots(figsize = (12, 6))
-    bars = ax.bar(nitrogen_data['Site'], nitrogen_data['Nitrogen (ppm)'], color = 'blue')
-    ax.axhspan(optimal_low, optimal_high, color = 'lightgreen', alpha = 0.5, label = 'Optimal Range')
-
-    # Highlight bars within the optimal range in green
-    for bar in bars:
-        if optimal_low <= bar.get_height() <= optimal_high:
-            bar.set_color('blue')
-
-    # Add labels, title, and legend
-    ax.set_xlabel('Site')
-    ax.set_ylabel('Nitrogen (ppm)')
-    ax.set_title('Nitrogen (ppm) Across Sites with Optimal Range')
-    ax.legend
-
-    plt.xticks(ha = 'center', wrap = True)
-    plt.tight_layout
+# This function calculates the correlation coefficients between HV (Hydrilla verticillata) and nutrient values (PO4F, NH4F, NO2F, NO3F) in Otter Point Creek, from 2002 to 2017. 
+def HV_nutrient_correlation(data):
+    # Convert relevant columns to numeric, coercing errors to NaN
+    nutrients = ['PO4F', 'NH4F', 'NO2F', 'NO3F']
+    for nutrient in nutrients:
+        data[nutrient + '_numeric'] = pd.to_numeric(data[nutrient], errors = 'coerce')
+    data['HV_numeric'] = pd.to_numeric(data['HV'], errors = 'coerce')
     
-    # Save Plot Locally
-    plot = './resources/nitrogen_sediment_plot'
-    plt.savefig(plot)
+    # Calculate and return the correlation coefficients
+    correlations = {}
+    for nutrient in nutrients:
+        correlations[f'HV vs {nutrient}'] = data['HV_numeric'].corr(data[nutrient + '_numeric'])
+    
+    return correlations
+
+#   CORRELATION VISUALIZATIONS   # 
+
+# This function scatter plots for HV (Hydrilla verticillata) and nutrient measurements (PO4F, NH4F, NO2F, NO3F) in OPC from 2003 - 2017. 
+def HV_nutrient_correlation_plot(data):
+    # Formatting of plots 
+    fig, axes = plt.subplots(nrows = 2, ncols = 2, figsize = (14, 10))
+    nutrients = ['PO4F', 'NH4F', 'NO2F', 'NO3F']
+    
+    # Iterate over nutrient type + create individual graph + merge
+    for i, nutrient in enumerate(nutrients):
+        ax = axes[i//2, i%2]
+        sns.regplot(ax = ax,
+                     data = data, #
+                     x = 'HV_numeric', # 
+                     y = nutrient + '_numeric', #
+                     scatter_kws = {'alpha':0.5}, # 
+                     line_kws = {'color':'red'}) # 
+        ax.set_title(f'{nutrient} vs HV')
+        ax.set_xlabel('HV')
+        ax.set_ylabel(nutrient)
+
+    plt.tight_layout()
+
+    # # Save Plot Locally
+    # plot = './resources/sav_nutrient_correlation/HV_nutrient_correlation_plot.png'
+    # plt.savefig(plot)
 
     # Show plot
     plt.show()
 
 
-# Load data 
-sediment_data_path = 'data/sediment/sediment_data.csv'
+# Uncomment to run code 
+merged = pd.read_csv('./data/SAV/cbmocnut_sav_merged.csv') # Read csv 
+data_df = pd.DataFrame(data) # Temporarily inject csv contents into data frame
 
-
-nitrogen_sediment_plot(sediment_data_path)
+HV_nutrient_correlation(data_df) # Run correlation 
+HV_nutrient_correlation_plot(data_df) # Output + Save plot 
